@@ -28,6 +28,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mayrajaramillo.appmascotas.ListaTareas" />
         </activity>
+        <activity
+            android:name=".NuevaMascotas"
+            android:label="@string/title_activity_nueva_mascotas"
+            android:parentActivityName=".Inicio" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mayrajaramillo.appmascotas.Inicio" />
+        </activity>
     </application>
 
 </manifest>

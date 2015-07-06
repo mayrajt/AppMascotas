@@ -1,54 +1,55 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blanco"
     android:orientation="vertical"
-    tools:context=".Inicio"
-    android:background="@color/blanco">
+    tools:context=".Inicio">
 
-    <include android:id="@+id/app_bar" layout="@layout/app_bar"/>
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar" />
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:layout_gravity="center"
-       android:layout_weight=".35"
-     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight=".35">
 
 
-       <ImageView
-           android:id="@+id/header"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:background="@drawable/ic_animales"
-           android:layout_gravity="center_vertical"/>
-   </LinearLayout>
+        <ImageView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_animales" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".50"
-        android:gravity="center"
-        >
+        android:gravity="center">
+
         <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/listMascotas"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="0dp"
-android:orientation="vertical"
-android:layout_weight=".15">
-<ImageButton
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="left"
-    android:src="@drawable/ic_add"
-    android:background="@color/morado2"
-    />
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".15"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/morado2"
+            android:contentDescription="boton1"
+            android:src="@drawable/ic_add" />
+    </LinearLayout>
 </LinearLayout>
