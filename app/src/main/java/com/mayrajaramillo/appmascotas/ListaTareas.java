@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 
 public class ListaTareas extends AppCompatActivity {
@@ -17,7 +19,19 @@ private Toolbar toolbar;
         setContentView(R.layout.activity_lista_tareas);
         toolbar =(Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
+        ImageButton boton2=(ImageButton) findViewById(R.id.btn2);
+        boton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), NuevaTarea.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

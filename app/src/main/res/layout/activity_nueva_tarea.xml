@@ -64,7 +64,7 @@
         android:layout_weight="0.3"
         android:orientation="vertical">
     <Button
-        android:id="@+id/btnGuardar"
+        android:id="@+id/btnTarea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

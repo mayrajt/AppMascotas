@@ -77,10 +77,8 @@ public class Inicio extends AppCompatActivity {
         }
         if(id==R.id.action_lista_tareas){
 
-            startActivity(new Intent(getBaseContext(), ListaTareas.class)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
-            finish();
-            return true;
+            Intent intent = new Intent(getApplicationContext(), ListaTareas.class);
+            startActivity(intent);
 
         }
 
