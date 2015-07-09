@@ -1,5 +1,6 @@
 package com.mayrajaramillo.appmascotas;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -45,9 +46,19 @@ public class NuevaTarea extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_inicio) {
+            startActivity(new Intent(getBaseContext(), Inicio.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+            finish();
             return true;
-        }
 
+        }
+        if(id==R.id.action_lista_tareas){
+            startActivity(new Intent(getBaseContext(), ListaTareas.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+            finish();
+            return true;
+
+        }
         return super.onOptionsItemSelected(item);
     }
 }

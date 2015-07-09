@@ -10,10 +10,12 @@
     <string name="guardar_btn">Guardar</string>
     <string name="tarea_text">Tarea</string>
     <string name="frecuencia_text">Frecuencia</string>
+    <string name="tipo_promt">Tipo</string>
     <string name="appbar_scrolling_view_behavior">holi</string>
     <string name="title_activity_nueva_mascota">NuevaMascota</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_nueva_mascotas">NuevaMascotas</string>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>

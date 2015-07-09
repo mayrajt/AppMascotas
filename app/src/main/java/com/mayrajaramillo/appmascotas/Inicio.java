@@ -21,7 +21,6 @@ public class Inicio extends AppCompatActivity {
 
     private Toolbar toolbar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +39,7 @@ public class Inicio extends AppCompatActivity {
         });
 
         final ListView listView = (ListView) findViewById(R.id.listMascotas);
-        String[] valores = new String[]{"Winky","Jack","Black","Midori","Chester","Shido"};
-        ArrayList<String> list = new ArrayList<String>();
-        for(int i = 0; i<valores.length;i++){
-            list.add(valores[i]);
-
-        }
+        String[] valores = new String[]{"Winky","Jack","Black","Chester"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1
         , android.R.id.text1,valores);
         listView.setAdapter(adapter);
@@ -82,6 +76,10 @@ public class Inicio extends AppCompatActivity {
 
         }
         if(id==R.id.action_lista_tareas){
+
+            startActivity(new Intent(getBaseContext(), ListaTareas.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+            finish();
             return true;
 
         }

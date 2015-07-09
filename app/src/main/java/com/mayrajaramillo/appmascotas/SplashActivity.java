@@ -1,28 +1,43 @@
 package com.mayrajaramillo.appmascotas;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
-public class ListaTareas extends AppCompatActivity {
-private Toolbar toolbar;
+public class SplashActivity extends AppCompatActivity{
+    private long SPLASH_SCREEN_DELAY = 3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_tareas);
-        toolbar =(Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_splash);
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                Intent intentPrincipal = new Intent(getApplicationContext(),Inicio.class);
+                startActivity(intentPrincipal);
+                finish();
+            }
+        };
+
+        Timer timer = new Timer();
+        timer.schedule(task, SPLASH_SCREEN_DELAY);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_lista_tareas, menu);
+        getMenuInflater().inflate(R.menu.menu_splash, menu);
+
+
         return true;
     }
 
@@ -34,17 +49,10 @@ private Toolbar toolbar;
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_inicio) {
-            startActivity(new Intent(getBaseContext(), Inicio.class)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
-            finish();
+        if (id == R.id.action_settings) {
             return true;
-
         }
-        if(id==R.id.action_lista_tareas){
-            return true;
 
-        }
         return super.onOptionsItemSelected(item);
     }
 }
