@@ -7,11 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 
-public class NuevaTarea extends AppCompatActivity {
+public class NuevaTarea extends AppCompatActivity implements OnItemSelectedListener {
     private Spinner spinnerFrec;
     private Toolbar toolbar;
 
@@ -19,15 +24,43 @@ public class NuevaTarea extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nueva_tarea);
-        String [] frecuenciaTarea ={"Diario","Semanal","Mensual","Otro"};
-        spinnerFrec = (Spinner) findViewById(R.id.spinnerFrecuencia);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item,frecuenciaTarea);
-        spinnerFrec.setAdapter(adapter);
-
-
         toolbar =(Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
+        spinnerFrec= (Spinner) findViewById(R.id.spinnerFrecuencia);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item){
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                View vista = super.getView(position, convertView, parent);
+                if (position == getCount()) {
+                    ((TextView)vista.findViewById(android.R.id.text1)).setText("");
+                    ((TextView)vista.findViewById(android.R.id.text1)).setHint(getItem(getCount()));
+                }
+
+                return vista;
+            }
+
+            @Override
+            public int getCount() {
+                return super.getCount()-1;
+            }
+
+
+        };
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.add("Diario");
+        adapter.add("Semanal");
+        adapter.add("Quincenal");
+        adapter.add("Mensual");
+        adapter.add("Frecuencia");
+
+
+        spinnerFrec.setAdapter(adapter);
+        spinnerFrec.setSelection(adapter.getCount());
+        spinnerFrec.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -53,12 +86,21 @@ public class NuevaTarea extends AppCompatActivity {
 
         }
         if(id==R.id.action_lista_tareas){
-            startActivity(new Intent(getBaseContext(), ListaTareas.class)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
-            finish();
+            Intent intent = new Intent(getApplicationContext(), ListaTareas.class);
+            startActivity(intent);
             return true;
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

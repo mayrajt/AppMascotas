@@ -9,10 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TextView;
 
 
 public class NuevaMascotas extends AppCompatActivity implements OnItemSelectedListener {
@@ -31,15 +33,41 @@ public class NuevaMascotas extends AppCompatActivity implements OnItemSelectedLi
         setSupportActionBar(toolbar);
 
       spTipos = (Spinner) findViewById(R.id.spinnerTipo);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tiposMascotas,
-                android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item){
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                View vista = super.getView(position, convertView, parent);
+                if (position == getCount()) {
+                    ((TextView)vista.findViewById(android.R.id.text1)).setText("");
+                    ((TextView)vista.findViewById(android.R.id.text1)).setHint(getItem(getCount()));
+                }
+
+                return vista;
+            }
+
+            @Override
+            public int getCount() {
+                return super.getCount()-1;
+            }
+
+
+        };
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        this.spTipos.setAdapter(adapter);
-        this.spTipos.setOnItemSelectedListener(this);
+        adapter.add("Canino");
+        adapter.add("Felino");
+        adapter.add("Acuatico");
+        adapter.add("Anfibio");
+        adapter.add("Roedor");
+        adapter.add("Tipos de Mascotas");
 
 
+        spTipos.setAdapter(adapter);
+        spTipos.setSelection(adapter.getCount());
+        spTipos.setOnItemSelectedListener(this);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -63,9 +91,9 @@ public class NuevaMascotas extends AppCompatActivity implements OnItemSelectedLi
 
         }
         if(id==R.id.action_lista_tareas){
-            startActivity(new Intent(getBaseContext(), ListaTareas.class)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
-            finish();
+
+            Intent intent = new Intent(getApplicationContext(), ListaTareas.class);
+            startActivity(intent);
             return true;
 
         }

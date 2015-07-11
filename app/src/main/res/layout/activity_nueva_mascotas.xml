@@ -19,9 +19,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/nombre_text_input_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:paddingRight="4sp">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/editText1"
@@ -49,9 +47,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/edad_text_input_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:paddingRight="4sp">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/editText2"
@@ -79,11 +75,11 @@
 
         <Spinner
             android:id="@+id/spinnerTipo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:prompt="@string/tipo_promt"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dropdown"
+
+            />
 
     </LinearLayout>
 

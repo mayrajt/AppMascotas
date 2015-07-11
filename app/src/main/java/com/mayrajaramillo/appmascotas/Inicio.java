@@ -46,9 +46,9 @@ public class Inicio extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int itemPosition = position;
-                String itemValue = (String) listView.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(),"Position"+itemPosition+"ListItem"+itemValue,
+
+                String itemValor = (String) listView.getItemAtPosition(position);
+                Toast.makeText(getApplicationContext(),"Mascota "+itemValor,
                         Toast.LENGTH_LONG).show();
 
             }
